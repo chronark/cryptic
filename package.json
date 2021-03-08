@@ -1,0 +1,45 @@
+{
+  "name": "cryptic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:chronark/cryptic.git",
+  "author": "Andreas Thomas <dev@chronark.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc --pretty --noEmit",
+    "fmt": "yarn lint && yarn format",
+    "format": "prettier --loglevel warn --write . ",
+    "lint": "eslint . --ext ts --ext tsx --fix",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/crypto-js": "^4.0.1",
+    "crypto-js": "^4.0.0",
+    "faunadb": "^4.1.1",
+    "next": "^10.0.8",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@types/react": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "autoprefixer": "^10.2.5",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "jest": "^26.6.3",
+    "postcss": "^8.2.7",
+    "prettier": "^2.2.1",
+    "tailwindcss": "^2.0.3",
+    "typescript": "^4.2.3"
+  }
+}

@@ -1,0 +1,18 @@
+Update(
+  Function("getDocument"), {
+    body: Query(
+      Lambda(
+        ["id"], 
+          Map(
+            Paginate(
+              Match(
+                Index("document_by_id"), 
+                CurrentIdentity()
+              )
+            ),
+            Lambda("listRef", Get(Var("listRef")))
+        )
+      )
+    ) 
+  }
+)
