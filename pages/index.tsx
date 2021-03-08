@@ -1,8 +1,8 @@
 import { NextPage } from "next"
 import React, { useState } from "react"
-import Link from "next/link"
 import { AES, SHA256 } from "crypto-js"
 import { v4 as uuid } from "uuid"
+import { Spinner } from "../components/spinner"
 
 const inputStyle =
   "block w-full px-4 py-3 border-2 border-gray-200 rounded focus:border-transparent focus:ring-2 focus:ring-rose-400 focus:outline-none focus:shadow-xl"
@@ -12,19 +12,6 @@ const examples: string[] = [
   `# .env
 TOKEN=${uuid()}`,
 ]
-
-const spinner = (
-  <span className="flex items-center justify-center w-full h-full">
-    <svg className="w-6 h-6 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-      <path
-        className="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-      ></path>
-    </svg>
-  </span>
-)
 
 enum State {
   IDLE,
@@ -75,28 +62,6 @@ export const Index: NextPage = (): JSX.Element => {
 
   return (
     <div className="flex flex-col h-screen">
-      <nav className="fixed z-50 w-screen px-8">
-        <div className="relative flex flex-col flex-wrap items-center justify-center py-5 mx-auto md:flex-row max-w-7xl">
-          <Link href="/">
-            <a className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-tr from-rose-700 to-orange-500">
-              Ephermeral Vault
-            </a>
-          </Link>
-
-          <div className="items-center justify-center hidden w-full h-full py-5 -ml-0 space-x-12 text-base md:flex md:-ml-5 md:py-0 md:absolute">
-            {[].map((link) => {
-              return (
-                <Link href={link.href} key={link.label}>
-                  <a className="relative font-medium leading-6 text-gray-600 transition duration-150 ease-out hover:text-gray-900">
-                    {link.label}
-                  </a>
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      </nav>
-
       <section className="container flex items-center justify-center h-screen px-4 py-16 mx-auto bg-white min-w-screen">
         {state === State.SUCCESS ? (
           <div className="flex flex-col items-center w-full space-y-2">
@@ -195,7 +160,7 @@ export const Index: NextPage = (): JSX.Element => {
                       onClick={createDocument}
                       className="inline-flex justify-center w-full px-8 py-3 font-medium leading-none text-center text-white no-underline bg-transparent rounded cursor-pointer hover:shadow-xl bg-gradient-to-tr focus-within:text-white sm:text-base md:text-lg from-rose-700 to-orange-500"
                     >
-                      {state === State.POSTING ? spinner : "Create"}
+                      {state === State.POSTING ? <Spinner /> : "Seal"}
                     </button>
                   </li>
                 </ul>
